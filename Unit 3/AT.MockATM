@@ -1,0 +1,17 @@
+bank_account = 10000
+print("1. Withdraw \n2. Deposit \n3. Exit")
+choice = input("Welcome to ATM! Pick from above [1|2|3]:")
+while choice != "3":
+    if choice == "1":
+        print("There is too much to withdraw!")
+    elif choice == "2":
+        amount = int(input("How much to deposit:"))
+        bank_account = bank_account + amount
+        print ("You have " + str(bank_account) + " in your bank account.")
+    elif choice == "3":
+        print("See you next time!")
+
+    print("1. Withdraw \n2. Deposit \n3. Exit")
+    choice = input("Pick from above [1|2|3]:")
+if choice == "3":
+    print(" Good Bye Have a Gud Time!")
