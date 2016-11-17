@@ -1,8 +1,9 @@
 import random
-#function name: get_p1_move
-#   arguments: none
-#   purpose: present player with options, use input() to get player move
-#   returns: the player's move as either 'r', 'p', or 's'
+
+
+
+
+
 def get_p1_move():
     get_p1_move = input(" You have a set of choices to chose from [r|p|s]")
 return get_p1_move
@@ -34,7 +35,8 @@ return rounds()
 #               "comp" if computer won
 #               "tie" if it's a tie
 def get_round_winner(p1move, cmove):
-    #code here
+    if (player_move == "r"):
+        print
 
 #function name: get_full_move
 #   arguments: a single letter move 'r','p', or 's'
