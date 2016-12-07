@@ -1,18 +1,22 @@
 import random
 
 
-
+def get_round():
+    rounds = int(input("how many rounds would you like to play from 1 to 9: "))
+   
+    return (rounds + 1)
 
 def get_p1_move():
-    p1_move = input("Would you like to play Rock, Paper or Scissors ")
+    p1_move = input("Would you like to play Rock, Paper or Scissors: ")
     if p1_move.lower() == "rock":
+       
         return "Rock"
     elif p1_move.lower() == "paper":
+        
         return "Paper"
     elif p1_move.lower() == "scissors":
+        
         return "Scissors"
-    else:
-        return "WRONG "
 
 def get_comp_move():
     comp_move = random.randint(1,3)
@@ -23,73 +27,61 @@ def get_comp_move():
     elif comp_move == 3:
         return "Scissors"
 
-def get_round():
-    rounds = int(input("how many rounds would you like to play from 1 to 9 "))
-    return rounds
-
 def get_winner(p1_move,comp_move):
     if p1_move == comp_move:
-        return "Tie"
-    elif comp_move == "paper " and p1_move == "rock ":
-        return "Computer"
-    elif p1_move == "rock " and comp_move == "paper ":
-        return "Player"
-    elif p1_move == "paper " and comp_move == " scissors ":
-        return "Player"
-    elif comp_move == " scissors" and p1_move == "paper":
-        return "Computer"
-    elif p1_move == " rock " and comp_move == "scissors ":
-        return "Player"
-    elif comp_move == "rock " and p1_move == "scissors ":
-        return " Computer"
+        return "tie"
+    elif p1_move == "Rock" and comp_move == "Paper":
+        return "computer"
+    elif p1_move == "Rock" and comp_move == "Scissors":
+        return "player"
+    elif p1_move == "Paper" and comp_move == "Rock":
+        return "computer"
+    elif p1_move == "Paper" and comp_move == "Scissors":
+        return "computer"
+    elif p1_move == "Scissors" and comp_move == "Rock":
+        return "computer"
+    elif p1_move == "Scissors" and comp_move == "Paper":
+        return "player"
 
-def get_full_move(short_move):
-    if short_move == "r":
-        return "Rock"
-    elif short_move == 'p':
-        return "Paper"
-    elif short_move == 's':
-        return "Scissors"
-
-def print_score(pscore, cscore, ties):
-    return("Player Wins: {}/n Computer Wins: {}/n Ties: {}")
-
-def rps():
-    rounds = get_round()
+def print_score(player_wins,comp_wins,ties):
     
-    pscore = 0
-    cscore = 0
+    print("The player's score is: {}".format(player_wins))
+    print("The computer's score is: {}".format(comp_wins))
+    print("The tie score is {}".format(ties))
+    
+def rps():
+    player_wins = 0
+    comp_wins = 0
     ties = 0
     
-    for x in range(rounds):
+    rounds = get_round()
+    for x in range(1,rounds):
         p1move = get_p1_move()
         compmove = get_comp_move()
-    
-        print("Player chose {}".format( get_full_move(p1move)))
-        print("The computer chose {}".format( get_full_move(compmove) ) )
-    
         winner = get_winner(p1move,compmove)
-        if winner == "Player":
-            print("Player1 won")
-            pscore = pscore + 1
-        
-        elif winner == "Computer":
-            print("The Computer won")
-            cscore = cscore + 1
+        print("Player chose: {}".format(p1move))
+        print("Computer chose: {}".format(compmove))
+    
+        if winner == "player":
+            print("Player Won!")
+            player_wins = player_wins + 1
+        elif winner == "computer":
+            print("Computer Won!")
+           
+            comp_wins = comp_wins + 1
+        else:
+            print("Tie!")
             
-        elif winner == "Tie":
-            print("It's a tie")
             ties = ties + 1
-        print(print_score(pscore, cscore, ties))
-        print("-------------------") 
+        print_score(player_wins,comp_wins,ties)
+    if player_wins > comp_wins:
+        print("Player Won the Game")
+    elif comp_wins > player_wins:
+        print("Computer Won the Game")
+    else:
+        print("The Game is a Draw")
+        
 
+rps()
 
-
-
-
-print(get_round())
-print(get_p1_move())
-print(get_comp_move())
-print(get_winner(get_p1_move,get_comp_move))
-print(rps)
-
+#dont open this code!!!!!!!!
