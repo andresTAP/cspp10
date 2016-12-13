@@ -1,5 +1,5 @@
 import random
-player_amount = 100
+bank_amount = 100
 
 
 print("Lets Play some Craps!")
@@ -11,17 +11,26 @@ def player_regulations():
     elif player_amount > 0:
         return input(int(" How much would you like to bet?: "))
 
-def bet_amount(player_bet):
-    if player_bet 
+def bet_amount(bank_amount):
+    bet = int(input("How much do you want to bet: "))
+    while True:
+        if bet < 0:
+            print("No negative numbers")
+            
+        elif bet <= bank_amount:
+            return bet
+            
+        elif bet > bank_amount:
+            print("You don't have that kind of money")
+            bet = int(input("Bank Acc: 100, How much do you want to bet: "))
 
 def phase_1():
     if dice_sum == (7) and (11):
-        return player_bet 
+        return "You have won! "
 
 def rolling_dices():
     dice1 = random.randint(1,6)
     dice2 = random.randint(1,6)
-    dice_sum = dice1 + dice2
     print("Rolled 2 dice: {} {}".format(dice1,dice2))
     return dice_sum
 
@@ -33,10 +42,11 @@ def phase_2(sum_of_dice):
     else: 
         return "point"
 
-def phase_3():
-    if dice_sum == 
-    
 
+
+
+def phase3():
+    if dice_sum
 
 #player_regulations()
 #phase_1()
