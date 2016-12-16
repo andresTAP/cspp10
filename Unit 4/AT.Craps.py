@@ -5,14 +5,14 @@ bank_amount = 100
 print("Lets Play some Craps!")
 print("----------------------")
 
-def player_regulations(player_amount):
-    if player_amount < 0:
+def player_regulations(bank_amount):
+    if bank_amount < 0:
         return " You are broke!"
-    elif player_amount > 0:
+    elif bank_amount > 0:
         return input(int(" How much would you like to bet?: "))
  
 
-def bet_amount(bank_amount):
+def phase1(bank_amount):
     bet = int(input("How much do you want to bet: "))
     while True:
         if bet < 0:
@@ -35,7 +35,7 @@ def rolling_dices():
     return dice_sum
 
 
-def phase_2(sum_of_dice,point_number):
+def phase2(sum_of_dice,point_number):
     if sum_of_dice == (7) or (11): 
         return "Player wins!" +1
     elif sum_of_dice == (2) or (3) and (12): 
@@ -44,15 +44,22 @@ def phase_2(sum_of_dice,point_number):
         return("Point number:{} ".format(point_number))
 
 
-def phase3(sum_of_dice,point_number):
-    if sum_of_dice == point_number:
-        print("Player Wins!" + str(bet_amount))
-    
+def phase3(dice_sum):
+    new_dice1 = random.randint(1,6)
+    new_dice2 = random.randint(1,6)
+    new_dice_sum = new_dice1 + new_dice2 
+    if new_dice_sum != 7 or  new_dice_sum != dice_sum:
+        while new_dice_sum != 7 or  new_dice_sum != dice_sum:
+            print("Dice 1: {} Dice 2: {}".format(new_dice1, new_dice2))
+            break
+        
+    elif new_dice_sum == 7 or new_dice_sum == dice_sum:
+        print("You Win")    
 
 
 
-#bet_amount(bank_amount)
-#player_regulations()
-#phase_1()
-#rolling_dices()
-#phase_2()
+phase1(bank_amount)
+player_regulations(bank_amount)
+rolling_dices()
+#phase2()
+#phase3()
