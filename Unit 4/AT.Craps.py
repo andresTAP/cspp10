@@ -56,8 +56,19 @@ def phase3(dice_sum):
     elif new_dice_sum == 7 or new_dice_sum == dice_sum:
         print("You Win")    
 
+def craps(bet,get_bank,rolling_dices,rolling2dices):
+    bank_amount == 100
+    bet = get_bet(bank_amount)
+    rolling_dices = rolling2_dices 
+    
+    while bank_amount > 0:
+        return 
 
 
+
+
+
+craps()
 phase1(bank_amount)
 player_regulations(bank_amount)
 rolling_dices()
