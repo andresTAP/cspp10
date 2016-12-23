@@ -27,7 +27,7 @@ def phase1(bank_amount):
 
     
 
-def rolling_dices():
+def roll2dices():
     dice1 = random.randint(1,6)
     dice2 = random.randint(1,6)
     dice_sum = dice1 + dice2
@@ -57,14 +57,28 @@ def phase3(dice_sum):
         print("You Win")    
 
 def craps():
-    bank_amount == 100
+    bank_amount = 100
     bet = phase1(bank_amount)
-    dice_sum = rolling_dices()
-    First_roll = get_first_roll(dice_sum)
-    
-    
+    roll2dices = get_roll2dice()
+    dice_sum = phase2
+    firstroll = get_first_roll(dice_sum)
+    new_dice_sum = phase3(dice_sum)
+
     while bank_amount > 0:
-        if dice_sum == "lose"
+        if dice_sum == 'lose':
+            bank_amount = bet - bet
+            print("You Lose! Bank Amount: {}".format(bank_amount))
+        elif dice_sum == 'win':
+            bank_amount = bet + bet
+            print("You Win! Bank Amount: {}".format(bank_amount))
+        elif dice_sum == dice_sum:
+            break
+        
+    print("Your Point Nunber: {}".format(dice_sum))
+    
+    if new_dice_sum == dice_sum:
+        bank_amount = bet + bet
+        print()
         
 
 
