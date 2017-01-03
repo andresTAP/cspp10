@@ -1,18 +1,8 @@
 import random
 bank_amount = 100
+print("Welcome to Craps, you have $100 in your bank")
 
-
-print("Lets Play some Craps")
-print("----------------------")
-
-def player_regulations(bank_amount):
-    if bank_amount < 0:
-        return " You are broke!"
-    elif bank_amount > 0:
-        return input(int(" How much would you like to bet?: "))
- 
-
-def phase1(bank_amount):
+def get_bet(bank_amount):
     bet = int(input("How much do you want to bet: "))
     while True:
         if bet < 0:
@@ -23,66 +13,81 @@ def phase1(bank_amount):
             
         elif bet > bank_amount:
             print("You don't have that kind of money")
-            bet = int(input("Bank Acc: 100, How much do you want to bet: "))
 
-    
-
-def roll2dices():
+        bet = int(input("Bank Acc: 100, How much do you want to bet: "))
+        
+def get_roll2dice():
     dice1 = random.randint(1,6)
     dice2 = random.randint(1,6)
     dice_sum = dice1 + dice2
-    print("Rolled 2 dice: {} {}".format(dice1,dice2))
-    return dice_sum
+    print("Dice 1: {} Dice 2: {}\nDice Sum: {}".format(dice1, dice2, dice_sum))
+    if (dice_sum == 2) or (dice_sum == 3) or (dice_sum == 12):
+        return 'lose'
+    
+    elif (dice_sum == 7) or (dice_sum ==  11):
+        return 'win'
+    
+    else:
+        return dice_sum
 
 
-def phase2(sum_of_dice,point_number):
-    if sum_of_dice == (7) or (11): 
-        return "Player wins!" +1
-    elif sum_of_dice == (2) or (3) and (12): 
-       return "House Wins!"
-    elif point_number == (1) or (4) or (5) or (6) or (8) or (9) or (10):
-        return("Point number:{} ".format(point_number))
 
+#function name: update_bank
+#purpose: change bank amount based on whether the player won or not
+#arguments:
+#   bet - what the player bet
+#   bank_amount - how much the player has in their bank
+#   result - what happened in the round
+#returns: the updated amount in the bank
 
-def phase3(dice_sum):
-    new_dice1 = random.randint(1,6)
-    new_dice2 = random.randint(1,6)
-    new_dice_sum = new_dice1 + new_dice2 
-    if new_dice_sum != 7 or  new_dice_sum != dice_sum:
-        while new_dice_sum != 7 or  new_dice_sum != dice_sum:
-            print("Dice 1: {} Dice 2: {}".format(new_dice1, new_dice2))
-            break
+def get_update_bank(bet, bank_amount, result):
+    if result == 'lose':
+        bank_amount = bet - bet
+        return("You Lost! Bank Amount: {}".format(bank_amount))
+
+    elif result == 'win':
+        bank_amount = bet + bet
+        return("You Won! Bank Amount: {}".format(bank_amount)) 
+    return bank_amount
         
-    elif new_dice_sum == 7 or new_dice_sum == dice_sum:
-        print("You Win")    
-
+def get_second_roll(dice_sum):
+    while True:
+        new_dice1 = random.randint(1,6)
+        new_dice2 = random.randint(1,6)
+        new_dice_sum = new_dice1 + new_dice2 
+        if new_dice_sum != 7 or  new_dice_sum != dice_sum:
+            while new_dice_sum != 7 or  new_dice_sum != dice_sum:
+                return("Dice 1: {} Dice 2: {}\nDice Sum: {}".format(new_dice1, new_dice2, new_dice_sum))
+        
+        elif new_dice_sum == 7 or new_dice_sum == dice_sum:
+            return("You Win")
+        
 def craps():
     bank_amount = 100
-    bet = phase1(bank_amount)
-    roll2dices = get_roll2dice()
-    dice_sum = phase2
-    firstroll = get_first_roll(dice_sum)
-    new_dice_sum = phase3(dice_sum)
+
 
     while bank_amount > 0:
+        bet = get_bet(bank_amount)
+        roll2dice = get_roll2dice()
+        dice_sum = roll2dice
+        new_dice_sum = get_second_roll(dice_sum)
+        
         if dice_sum == 'lose':
-            bank_amount = bet - bet
+            bank_amount = bank_amount - bet
             print("You Lose! Bank Amount: {}".format(bank_amount))
         elif dice_sum == 'win':
-            bank_amount = bet + bet
+            bank_amount = bank_amount + bet
             print("You Win! Bank Amount: {}".format(bank_amount))
         elif dice_sum == dice_sum:
             break
-        
-    print("Your Point Nunber: {}".format(dice_sum))
     
+    print("Your Point Nunber: {}".format(dice_sum))
+
     if new_dice_sum == dice_sum:
-        bank_amount = bet + bet
-        print()
+        bank_amount = bank_amount + bet
+        print("You Win! Bank Amount: {}".format(bank_amount))
         
-
-
-
-
+            
+    
 
 craps()
