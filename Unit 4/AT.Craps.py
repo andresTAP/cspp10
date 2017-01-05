@@ -1,5 +1,7 @@
 import random
 bank_amount = 100
+print("Lets play Craps!")
+print("-------------------")
 print("Welcome to Craps, you have $100 in your bank")
 
 def get_bet(bank_amount):
