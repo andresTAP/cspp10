@@ -5,14 +5,11 @@ import random
 #This will scramble the word the user typed 
 #Trying to make this function without the use of scramble()will be my goal
 def scramble_word():
-    user_input = input("Enter a language: ")
+    user_input = input("Enter a word: ")
     some_word = list(user_input)
     random.shuffle(some_word)
+    user_input[0]
     print(some_word)
-    
-    
-    
-    
     
     
     
@@ -26,5 +23,10 @@ def scramble_word():
 
 
 #def scramble_phrase():
+    
      
+
+
+
 scramble_word()     
+#scramble_phrase()
