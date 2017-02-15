@@ -3,40 +3,49 @@ import random
 
 def random_spin():
     # generate a random number from 1 to 4
-    spin = random.randint(1,4)
-    print("Spunned {}".format(spin))
+    spin = random.randint(1,6)
+    print("Spun {}".format(spin))
     # return spin
     return spin
 
+def print_line():
+    print("-------------------------------------------------")
+    
+
 random_spin == 0
+
 
 print("You've chosen the kissing booth, congrats! Please enter your name:")
 username = input()
 
-print("---------------------------------------------")
+print_line()
 
 print('Well then, '+ username + ', as a surprise factor your kisser will be selected at random!')
 
-print("-----------------------------------------------")
+print_line()
 
 print("Here is the list of kissing contestents: Catherine, Mike, Zati, and Jenny!")
 
-print("-------------------------------------------------")
 
 
-if random_spin == 1:
-    print('Congrationlations'+ username + ', Catherine the Latina beauty has been selected from the random spin!')
-    
-if random_spin == 2:
-    print('Congrationlations' + username + ', Mike the American shut-in has been selected from the random spin!')
-    
-if random_spin == 3:
-    print('Congrationlations' + username + ', Jenny the Brazilian dancer has been selected from the random spin!')
-    
-if random_spin == 4:
-    print('Congrationlations' + username + ', Zati the Indian goat has been selected from the random spin!')
+def kissing_contestor():
+    while True:
+        if random_spin() == 1:
+            print('Congrationlations {}, Catherine the Latina beauty has been selected from the random spin!'.format(username))
+        elif random_spin() == 2:
+            print('Congrationlations {}, Nick the emo twink has been selected from the random spin!'.format(username))
+        elif random_spin() == 3:
+            print('Congrationlations {},Jenny the Brazilian dancer has been selected from the random spin!'.format(username))
+        elif random_spin() == 4:
+            print('Congrationlations {}, Zati the Indian goat has been selected from the random spin!'.format(username))
+        elif random_spin() == 5:
+            print('Congrationlations {}, Jessica the ROTC cadet has been selected from the random spin!'.format(username))
+        elif random_spin() == 6:
+            print('Congrationlations {}, Speedy Gonzalo has been selected from the random spin!'.format(username))
     
 
+random_spin()
+kissing_contestor()
 #def Kissing_Booth():
    
     

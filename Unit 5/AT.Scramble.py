@@ -1,5 +1,5 @@
 #Meant to scramble the letters in the word or phrase when code is complete and functional
-import random
+import random 
 
 #Purpose is to recognize the user's input
 #This will scramble the word the user typed 

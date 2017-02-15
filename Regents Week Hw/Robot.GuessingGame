@@ -2,16 +2,19 @@ import random
 
 guessesTaken = 0
 
+def print_line():
+    print("-------------------------------------------------")
+
 print('Hello! What is your name?')
 username = input()
 
-print("----------------------------")
+print_line()
 
 number = random.randint(1, 20)
 print('Well, ' + username + ', the name is Bot I am thinking of a number between 1 and 20.')
 
 
-print("-------------------------------")
+print_line()
 
 if guessesTaken == 0:
     print('Take a guess.') # There are four spaces in front of print.
@@ -35,3 +38,37 @@ if guess == number:
 if guess != number:
     number = str(number)
 print('Nope. The number I was thinking of was ' + number)
+
+
+def new_round():
+    new_round = input("Do you want to continue? [y|n]").lower()
+    if new_round != "y":
+        return input()
+
+# function for the main game
+def mind_game(new_round):
+    #how many guesses the player has taken thus far
+    guessesTaken = 0
+    #loop as long as the player wants to play
+    while guessesTaken > 0:
+    
+        if guess == number: #user won
+            print('Good job, ' + username + '! You guessed my number in ' + guessesTaken + ' guesses!')
+        else: #user lost
+            print("Nope the number I was thinking of was " + number)
+            number != guess
+        
+        if number!= guess:    
+            print("You have taken {} this much guesses".format(guessesTaken))
+        #ask if they want to do another round
+        
+        new_round = input("Do you want to continue? [y|n]").lower()
+        if new_round != "y":
+            break
+        
+    print("Game over, hoped you enjoyed! ")
+    
+    
+mind_game(new_round)
+
+
